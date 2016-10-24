@@ -16,7 +16,22 @@
         <x:String x:Key="AppName">Save the Humans</x:String>
         <ControlTemplate x:Key="EnemyTemplate" TargetType="ContentControl">
             <Grid>
-                <Ellipse Fill="#FFF90A0A" Height="100" Stroke="Black" Width="100"/>
+                <Ellipse Fill="Gray" Height="100" Stroke="Black" Width="75"/>
+                <Ellipse Fill="Black" Height="35" Stroke="Black" Width="25"
+                         HorizontalAlignment="Center" VerticalAlignment="Top"
+                         Margin="40,20,70,0" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform SkewX="10"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse Fill="Black" Height="35" Stroke="Black" Width="25"
+                         HorizontalAlignment="Center" VerticalAlignment="Top"
+                         Margin="70,20,40,0" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform SkewX="-10"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+
             </Grid>
         </ControlTemplate>
     </Page.Resources>
@@ -50,7 +65,8 @@
         <Button x:Name="startButton" Content="Start!" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="startButton_Click"/>
         <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock TextWrapping="Wrap" Text="Avoid These" Style="{StaticResource SubheaderTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ContentControl Content="ContentControl" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{StaticResource EnemyTemplate}"/>
+            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Template="{StaticResource EnemyTemplate}">
+            </ContentControl>
         </StackPanel>
         <ProgressBar x:Name="progressBar" Grid.Column="1" Grid.Row="2" Height="20"/>
         <Canvas x:Name="playArea" Grid.Row="1" Grid.ColumnSpan="3" PointerMoved="playArea_PointerMoved" PointerExited="playArea_PointerExited">
